@@ -23,7 +23,6 @@ print 'splitting up...'
 Xtr, Xval, ytr, yval = train_test_split(X, y, test_size=0.2, random_state=42)
 
 
-
 _, D = X.shape
 layer_1_size, layer_2_size = 500, 250
 number_of_classes = len(np.unique(y))
