@@ -24,6 +24,11 @@ class NeuralNetwork(Classifier):
         self.params['b3'] = np.ones(self.C) * 0.01
 
 
+    def copy(self):
+        nn = NeuralNetwork(self.D, self.H1, self.H2, self.C)
+        return nn
+
+
     def train(self,
               X,
               y,
