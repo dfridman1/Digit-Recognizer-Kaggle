@@ -66,6 +66,13 @@ class NeuralNetwork(Classifier):
 
 
     def predict(self, X):
+        scores = self.predict_scores(X)
+
+        y_pred = np.argmax( scores, axis=1 )
+        return np.vectorize(self.to_label)(y_pred)
+
+
+    def predict_scores(self, X):
         W1, b1, W2, b2, W3, b3 = (self.params['W1'],
                                   self.params['b1'],
                                   self.params['W2'],
@@ -75,9 +82,7 @@ class NeuralNetwork(Classifier):
         scores = np.maximum(0,
                             np.maximum(0,
                                        X.dot(W1) + b1).dot(W2) + b2).dot(W3) + b3
-
-        y_pred = np.argmax( scores, axis=1 )
-        return np.vectorize(self.to_label)(y_pred)
+        return scores
 
 
     def loss(self, X, y, reg=0):
