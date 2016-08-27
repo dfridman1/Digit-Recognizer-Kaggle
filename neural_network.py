@@ -16,9 +16,9 @@ class NeuralNetwork(Classifier):
         self.C = number_of_classes
 
         self.params = {}
-        self.params['W1'] = np.random.randn(self.D, self.H1) / np.sqrt(2*self.D)
-        self.params['W2'] = np.random.randn(self.H1, self.H2) / np.sqrt(2*self.H1)
-        self.params['W3'] = np.random.randn(self.H2, self.C) / np.sqrt(2*self.H2)
+        self.params['W1'] = np.random.randn(self.D, self.H1) * np.sqrt(2./self.D)
+        self.params['W2'] = np.random.randn(self.H1, self.H2) * np.sqrt(2./self.H1)
+        self.params['W3'] = np.random.randn(self.H2, self.C) * np.sqrt(2./self.H2)
         self.params['b1'] = np.ones(self.H1) * 0.01
         self.params['b2'] = np.ones(self.H2) * 0.01
         self.params['b3'] = np.ones(self.C) * 0.01
